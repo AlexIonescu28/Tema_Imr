@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="traker2" size="0.063500 0.088742" />
+    <ImageTarget name="traker1" size="0.063500 0.088317" />
     <ImageTarget name="71ixkdjmvl" size="0.135000 0.188285" />
     <ImageTarget name="whatsappimage2026-10-03at21" size="0.210000 0.277292" />
   </Tracking>
