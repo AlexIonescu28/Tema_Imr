@@ -1,50 +1,18 @@
-using TMPro;
 using UnityEngine;
+using TMPro; // Obligatoriu pentru TextMeshPro
 
 public class ScoreManager : MonoBehaviour
 {
-    [Header("UI")]
-    public TMP_Text scoreLabel;
-    public string format = "Scor: {0}";
+    private int Score = 0;
 
-    [Header("Feedback UI")]
-    public float punchScale = 1.3f;
-    public float punchDuration = 0.25f;
+    
+    public TextMeshProUGUI scoreText;
 
-    public int Score { get; private set; }
-
-    float _punchT = 1f;
-    Vector3 _labelBaseScale = Vector3.one;
-
-    void Awake()
+    public void addScore(int scoreToAdd)
     {
-        if (scoreLabel != null) _labelBaseScale = scoreLabel.transform.localScale;
-        Refresh();
-    }
+        Score = Score + scoreToAdd;
 
-    public void AddScore(int amount)
-    {
-        Score += amount;
-        Refresh();
-        _punchT = 0f;
-    }
-
-    public void ResetScore()
-    {
-        Score = 0;
-        Refresh();
-    }
-
-    void Update()
-    {
-        if (scoreLabel == null || _punchT >= 1f) return;
-        _punchT += Time.deltaTime / punchDuration;
-        float k = Mathf.Sin(Mathf.Clamp01(_punchT) * Mathf.PI);
-        scoreLabel.transform.localScale = _labelBaseScale * Mathf.Lerp(1f, punchScale, k);
-    }
-
-    void Refresh()
-    {
-        if (scoreLabel != null) scoreLabel.text = string.Format(format, Score);
+       
+        scoreText.text = "Scor: " + Score;
     }
 }
